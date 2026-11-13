@@ -1,10 +1,23 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
-  "buildCommand": "npm run build",
-  "outputDirectory": "apps/web/build",
-  "installCommand": "npm install",
+  "services": {
+    "api": {
+      "root": "apps/api",
+      "framework": "express"
+    },
+    "web": {
+      "root": "apps/web",
+      "framework": "sveltekit-1"
+    }
+  },
   "rewrites": [
-    { "source": "/api/(.*)", "destination": "/apps/api/api/index.js" },
-    { "source": "/(.*)", "destination": "/apps/web" }
+    {
+      "source": "/api/(.*)",
+      "destination": { "service": "api" }
+    },
+    {
+      "source": "/(.*)",
+      "destination": { "service": "web" }
+    }
   ]
 }
