@@ -1,0 +1,18 @@
+{
+  "name": "geointel-admin",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Sistema de administración de inteligencia geopolítica/económica — SvelteKit + Node.js + Supabase",
+  "workspaces": [
+    "apps/*"
+  ],
+  "scripts": {
+    "dev:web": "npm run dev -w apps/web",
+    "dev:api": "npm run dev -w apps/api",
+    "build": "npm run build -w apps/web && npm run build -w apps/api",
+    "seed:admin": "node scripts/create-admin.js"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
